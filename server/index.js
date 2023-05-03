@@ -9,7 +9,8 @@ import managementRoutes from './routes/management.routes.js';
 import salesRoutes from './routes/sales.routes.js';
 import generalRoutes from './routes/general.routes.js';
 import connectDB from './mongodb/database.config.js';
-
+import AffiliateStatModel from './mongodb/models/AffiliateStat.model.js';
+import {dataAffiliateStat} from './data/index.js';
 dotenv.config();
 const app = express();
 //middleware
@@ -35,6 +36,8 @@ const startServer =  ()=> {
         //ProductModel.insertMany(dataProduct);
         //ProductStatModel.insertMany(dataProductStat);
         //TransactionModel.insertMany(dataTransaction)
+        //OverallStatModel.insertMany(dataOverallStat)
+        //AffiliateStatModel.insertMany(dataAffiliateStat);
         console.log(`Server started on ${PORT}`)
     })
 }
