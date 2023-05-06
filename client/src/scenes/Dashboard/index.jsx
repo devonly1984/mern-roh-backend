@@ -23,6 +23,7 @@ const Dashboard = () => {
   const theme = useTheme();
   const { data, isLoading } = useGetDashboardStatsQuery();
   const isNonMobile = useMediaQuery("(min-width: 1200px)");
+  console.log(data);
 
   const columns = [
     {
@@ -89,7 +90,7 @@ const Dashboard = () => {
         {/**Row 1 */}
         <StatBox
           title="Total Customers"
-          valuye={data && data.totalCustomers}
+          value={data && data?.overallStat[0]?.totalCustomers}
           increase="+14%"
           description="since Last Month"
           icon={
@@ -100,7 +101,7 @@ const Dashboard = () => {
         />
         <StatBox
           title="Sales Today"
-          valuye={data && data.todayStats.totalSales}
+          value={data && data?.todayStats?.totalSales}
           increase="+21%"
           description="since Last Month"
           icon={
@@ -120,7 +121,7 @@ const Dashboard = () => {
         </Box>
         <StatBox
           title="Monthly Sales"
-          value={data && data?.thisMonthsStats?.totalSales}
+          value={data && data?.thisMonthStats.totalSales}
           increase="+5%"
           description="since Last Month"
           icon={
@@ -131,7 +132,7 @@ const Dashboard = () => {
         />
         <StatBox
           title="Yearly Sales"
-          valuye={data && data.yearlySalesTotal}
+          value={data && data.overallStat[0].yearlySalesTotal}
           increase="+43%"
           description="since Last Month"
           icon={

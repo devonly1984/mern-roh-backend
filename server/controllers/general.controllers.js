@@ -23,12 +23,10 @@ export const getDashboardStats = async (req, res) => {
       .sort({ createdOn: -1 });
     const overallStat = await OverallStatModel.find({ year: currentYear });
     const {
-      totalCustomers,
-      yearlyTotalSoldUnits,
-      yearlySalesTotal,
       monthlyData,
       salesByCategory,
     } = overallStat;
+    
     const thisMonthStats = overallStat[0].monthlyData.find(({ month }) => {
       return month === currentMonth;
     });
@@ -37,9 +35,7 @@ export const getDashboardStats = async (req, res) => {
     });
 
     res.status(200).json({
-      totalCustomers,
-      yearlyTotalSoldUnits,
-      yearlySalesTotal,
+      overallStat,
       monthlyData,
       salesByCategory,
       thisMonthStats,
