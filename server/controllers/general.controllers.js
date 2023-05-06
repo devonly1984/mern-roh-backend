@@ -35,6 +35,7 @@ export const getDashboardStats = async (req, res) => {
     const todayStats = overallStat[0].dailyData.find(({ date }) => {
       return (date = currentDay);
     });
+
     res.status(200).json({
       totalCustomers,
       yearlyTotalSoldUnits,
